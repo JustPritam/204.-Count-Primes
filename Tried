@@ -1,0 +1,27 @@
+class Solution {
+    public int countPrimes(int n) {
+        if(n<=2)
+        return 0;
+        if(n == 3)
+        return 1;
+        boolean count[] = new boolean[n+1];        
+        Arrays.fill(count,true);
+        count[0] = false;
+        count[1] = false;
+        count[n] = false;
+        for(int i = 2; i*i <= n; i++){
+            for(int j = 2*i; j <= n; j+=i){
+                count[j] = false;
+            }
+        }
+        int c = 0;
+        for(int i = 0; i < count.length; i++){
+            //System.out.println(i+"  "+count[i]);
+            if(count[i] == true)
+            c++;
+        }
+        return c;
+    }
+}
+
+Seive of Eratosthenes
